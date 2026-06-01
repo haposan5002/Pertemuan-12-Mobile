@@ -1,0 +1,34 @@
+name: flutter_foto_notif
+description: Aplikasi foto dengan notifikasi lokal
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Kamera & Galeri
+  image_picker: ^1.0.7
+  camera: ^0.10.5+9
+
+  # Notifikasi Lokal
+  flutter_local_notifications: ^17.1.2
+
+  # Permission
+  permission_handler: ^11.3.0
+
+  # Path
+  path_provider: ^2.1.3
+  path: ^1.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
