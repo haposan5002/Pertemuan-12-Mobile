@@ -668,3 +668,19 @@ Digunakan untuk menampilkan:
 
 * Nama file gambar.
 * Informasi apakah gambar berasal dari kamera atau galeri.
+  
+# Screenshot Hasil Program
+
+### Output 1 - Ambil Foto (Camera API)
+
+<img src="screenshot/output%201.jpeg" width="250">
+
+Foto berhasil diambil menggunakan kamera perangkat.
+
+---
+
+### Output 2 - Pilih Foto (Gallery API)
+
+<img src="screenshot/output%202.jpeg" width="250">
+
+Foto berhasil dipilih dari galeri perangkat.
