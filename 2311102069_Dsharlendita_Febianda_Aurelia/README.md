@@ -1,3 +1,46 @@
+<h3 align="center">LAPORAN PRAKTIKUM</h3>
+<h3 align="center">APLIKASI BERBASIS PLATFORM</h3>
+<h3 align="center">Modul 7</h3>
+<h3 align="center">NAVIGASI & NOTIFIKASI (UNGUIDED)</h3>
+
+<br>
+<p align="center">
+  <img src="screenshot/logo telkom university.png" width="150"/>
+</p>
+<br>
+
+<p align="center">
+Disusun oleh:
+<br><br>
+D’SHARLENDITA FEBIANDA AURELIA  
+<br>
+2311102069  
+<br>
+S1 IF-11-04  
+</p>
+
+<br>
+
+<p align="center">
+Dosen Pengampu:
+<br>
+Cahyo Prihantoro, S.Kom., M.Eng  
+</p>
+
+<br><br>
+
+<p align="center">
+PROGRAM STUDI S1 INFORMATIKA  
+<br>
+FAKULTAS INFORMATIKA  
+<br>
+TELKOM UNIVERSITY PURWOKERTO  
+<br>
+2026  
+</p>
+
+---
+
 # Dependencies yang Digunakan
 
 Pada project ini digunakan beberapa package tambahan yang terdapat pada file `pubspec.yaml`.
