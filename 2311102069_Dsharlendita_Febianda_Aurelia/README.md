@@ -1,7 +1,7 @@
 <h3 align="center">LAPORAN PRAKTIKUM</h3>
 <h3 align="center">APLIKASI BERBASIS PLATFORM</h3>
 <h3 align="center">Modul 8 & 9</h3>
-<h3 align="center">NAVIGASI & NOTIFIKASI (UNGUIDED)</h3>
+<h3 align="center">API PERANGKAT KERAS</h3>
 
 <br>
 <p align="center">
