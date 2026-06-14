@@ -1,0 +1,168 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await NotificationService.init();
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Camera & Notification',
+      home: const HomePage(),
+    );
+  }
+}
+
+class NotificationService {
+  static final FlutterLocalNotificationsPlugin
+      flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  static Future init() async {
+    const AndroidInitializationSettings androidSettings =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    const InitializationSettings settings =
+        InitializationSettings(
+      android: androidSettings,
+    );
+
+    await flutterLocalNotificationsPlugin.initialize(
+      settings,
+    );
+  }
+
+  static Future showNotification(
+      String title,
+      String body) async {
+    const AndroidNotificationDetails details =
+        AndroidNotificationDetails(
+      'photo_channel',
+      'Photo Notification',
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+
+    const NotificationDetails notificationDetails =
+        NotificationDetails(
+      android: details,
+    );
+
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      title,
+      body,
+      notificationDetails,
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() =>
+      _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  File? imageFile;
+
+  final ImagePicker picker = ImagePicker();
+
+  Future pickCamera() async {
+    final XFile? image =
+        await picker.pickImage(
+      source: ImageSource.camera,
+    );
+
+    if (image != null) {
+      setState(() {
+        imageFile = File(image.path);
+      });
+
+      NotificationService.showNotification(
+        "Foto Berhasil",
+        "Foto berhasil diambil dari kamera",
+      );
+    }
+  }
+
+  Future pickGallery() async {
+    final XFile? image =
+        await picker.pickImage(
+      source: ImageSource.gallery,
+    );
+
+    if (image != null) {
+      setState(() {
+        imageFile = File(image.path);
+      });
+
+      NotificationService.showNotification(
+        "Foto Berhasil",
+        "Foto berhasil dipilih dari galeri",
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Notifikasi & API Perangkat Keras",
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+
+            ElevatedButton.icon(
+              onPressed: pickCamera,
+              icon: const Icon(Icons.camera_alt),
+              label: const Text(
+                "Ambil Foto Kamera",
+              ),
+            ),
+
+            const SizedBox(height: 15),
+
+            ElevatedButton.icon(
+              onPressed: pickGallery,
+              icon: const Icon(Icons.photo),
+              label: const Text(
+                "Pilih Dari Galeri",
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            imageFile != null
+                ? Image.file(
+                    imageFile!,
+                    height: 300,
+                  )
+                : const Text(
+                    "Belum ada foto",
+                  ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
